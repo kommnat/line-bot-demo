@@ -9,8 +9,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get('/bot1', (req, res) => {
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
     res.sendStatus(200)
-    console.log('Hello World');
+    // console.log('Hello World');
 })
 
 app.post('/webhook', (req, res) => {
