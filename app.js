@@ -8,7 +8,7 @@ const port = process.env.PORT || 4000
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-app.get('/bot1', (req, res) => {
+app.get('/bot3', (req, res) => {
     res.header("Cache-Control", "no-cache, no-store, must-revalidate");
     res.header("Pragma", "no-cache");
     res.header("Expires", 0);
