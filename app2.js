@@ -7,12 +7,7 @@ const app = express()
 const port = process.env.PORT || 4000
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-
-app.get('https://moshibotnat.herokuapp.com/app2.js', (req, res) => {
-    res.sendStatus(200)
-})
-
-app.post('https://moshibotnat.herokuapp.com/app2.js', (req, res) => {
+app.post('/webhook', (req, res) => {
     let reply_token = req.body.events[0].replyToken
     let msg = req.body.events[0].message.text
     reply(reply_token, msg)
