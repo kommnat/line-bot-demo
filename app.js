@@ -8,8 +8,9 @@ const port = process.env.PORT || 4000
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-app.get('/', (req, res) => {
+app.get('/bot1', (req, res) => {
     res.sendStatus(200)
+    console.log('Hello World');
 })
 
 app.post('/webhook', (req, res) => {

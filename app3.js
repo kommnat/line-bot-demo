@@ -14,8 +14,9 @@ aimlInterpreter.loadAIMLFilesIntoArray(['./test-aiml.xml'])
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-app.get('/', (req, res) => {
+app.get('/bot3', (req, res) => {
     res.sendStatus(200)
+    console.log('Hello World');
 })
 
 app.post('/webhook', (req, res) => {
