@@ -33,8 +33,8 @@ function reply(reply_token, msg) {
     let body = JSON.stringify({
         replyToken: reply_token,
         messages: [{
-            type: 'text',
-            text: replyToken,
+            type: 'message',
+            text: msg,
         },
         {
             type: 'text',
