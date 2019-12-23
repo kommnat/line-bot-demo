@@ -21,7 +21,10 @@ app.post('/webhook', (req, res) => {
     res.header("Pragma", "no-cache");
     res.header("Expires", 0);
     let reply_token = req.body.events[0].replyToken
-    reply(reply_token)
+    let msg = req.body.events[0].message.text
+    aimlInterpreter.findAnswerInLoadedAIMLFiles(msg, (answer, wildCardArray, input) => {
+        reply(reply_token, answer)
+    })
     res.sendStatus(200)
 })
 app.listen(port)
