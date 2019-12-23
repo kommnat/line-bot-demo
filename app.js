@@ -29,7 +29,7 @@ app.post('/webhook', (req, res) => {
     }else if(msg == 'list' || msg == 'list'){
         fetch('http://fondue.traffy.in.th/fondue/?limit=2&reported_tos=1289&status=report')
         .then((res) => {
-         let json =  res.json()
+         let json = ' res.json()'
          reply1(reply_token, msg, json)
         })
         
