@@ -1,35 +1,22 @@
-// Reply with two static messages
+const express = require('express');
+const line = require('@line/bot-sdk');
 
-const express = require('express')
-const bodyParser = require('body-parser')
-const request = require('request')
-const app = express()
-const port = process.env.PORT || 4000
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+require('dotenv').config();
 
-app.get('/bot3', (req, res) => {
-    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
-    res.header("Pragma", "no-cache");
-    res.header("Expires", 0);
-    let reply_token = req.body.events[0].replyToken
-    let msg = req.body.events[0].message.text
-    reply(reply_token, msg)
-    res.sendStatus(200) 
-    // console.log('Hello World');
-})
+const app = express();
 
-app.post('/webhook', (req, res) => {
-    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
-    res.header("Pragma", "no-cache");
-    res.header("Expires", 0);
-    let reply_token = req.body.events[0].replyToken
-    let msg = req.body.events[0].message.text
-    reply(reply_token, msg)
-    
-    res.sendStatus(200)
-})
-app.listen(port)
+const config = {
+    channelAccessToken: process.env.channelAccessToken,
+    channelSecret: process.env.channelSecret
+};
+
+const client = new line.Client(config);
+
+app.post('/webhook', line.middleware(config), (req, res) => {
+    Promise
+        .all(req.body.events.map(handleEvent))
+        .then((result) => res.json(result));
+});
 
 
 function handleEvent(event) {
@@ -46,6 +33,11 @@ function reply(reply_token, msg) {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer {tXOxbBNHDvyxUTITtlUkErraVe0AtpyFeb8Shb3+33rcl826FIjNK6eoMvgfU/6Fnmj1h9nNG6Km+ZeN6YG9BFg5phdOAhZscsvKT23QR8i6lr4f112jGMLQqLG/1mwQrQCJANMtk/SqfnhPjiy2gAdB04t89/1O/w1cDnyilFU=}'
     }
+
+    var msg = {
+        type: 'text',
+        text: 'สวัสดีครัช'
+    };
     var eventText = event.message.text.toLowerCase();
     if (eventText === 'image') {
         msg = {
