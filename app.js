@@ -27,11 +27,11 @@ app.post('/webhook', (req, res) => {
     if(msg == 'chelsea' || msg == 'Chelsea' ){
         reply(reply_token, msg)
     }else if(msg == 'list' || msg == 'list'){
-        fetch('http://fondue.traffy.in.th/fondue/?limit=2&reported_tos=1289&status=report')
-        .then((res) => {
-         let json = ' res.json()'
+        axios.get('http://fondue.traffy.in.th/fondue/?limit=2&reported_tos=1289&status=report')
+        .then((response) => {return response})
+         let json = response;
          reply1(reply_token, msg, json)
-        })
+        
         
     }
     
