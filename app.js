@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
 const port = process.env.PORT || 4000
+//const fetch = require('node-fetch');
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
@@ -26,6 +27,21 @@ app.post('/webhook', (req, res) => {
     if(msg == 'chelsea' || msg == 'Chelsea' ){
         reply(reply_token, msg)
     }else if(msg == 'list' || msg == 'list'){
+
+        fetch('http://fondue.traffy.in.th/fondue/?limit=2&reported_tos=1289&status=report')
+        .then((response) => response.json())
+        .then((responseJson) => {
+            console.log('json :',responseJson)
+            // this.setState({
+            //     dataProblemCount: responseJson.results.length,
+            //     dataProblem: responseJson.results,
+            //     dataNext: responseJson.next,
+            //     refreshing: false,
+            // })
+        })
+        .catch((error) => {
+            console.error(error);
+        });
         reply1(reply_token, msg)
     }
     
