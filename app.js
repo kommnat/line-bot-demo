@@ -14,9 +14,7 @@ app.get('/bot3', (req, res) => {
     res.header("Expires", 0);
     let reply_token = req.body.events[0].replyToken
     let msg = req.body.events[0].message.text
-    aimlInterpreter.findAnswerInLoadedAIMLFiles(msg, (answer, wildCardArray, input) => {
-    reply(reply_token, answer)
-    })
+    reply(reply_token, msg)
     res.sendStatus(200) 
     // console.log('Hello World');
 })
@@ -27,9 +25,8 @@ app.post('/webhook', (req, res) => {
     res.header("Expires", 0);
     let reply_token = req.body.events[0].replyToken
     let msg = req.body.events[0].message.text
-    aimlInterpreter.findAnswerInLoadedAIMLFiles(msg, (answer, wildCardArray, input) => {
-        reply(reply_token, answer)
-    })
+    reply(reply_token, msg)
+    
     res.sendStatus(200)
 })
 app.listen(port)
@@ -42,11 +39,11 @@ function reply(reply_token, msg) {
         replyToken: reply_token,
         messages: [{
             type: 'text',
-            text: msg,
+            text: 'Hello , ',
         },
         {
             type: 'text',
-            text: 'How are you?'
+            text: msg
         }]
     })
     request.post({
