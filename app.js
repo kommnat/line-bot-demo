@@ -34,13 +34,18 @@ function reply(reply_token ,msg) {
     let body = JSON.stringify({
         replyToken: reply_token,
         messages: [{
-            type: 'text',
-            text: 'Hello'
-        },
-        {
-            type: 'text',
-            text: msg
-        }]
+            'type': 'image',
+            'originalContentUrl': 'https://www.thesun.co.uk/wp-content/uploads/2017/03/fifa-17-2.jpg?strip=all&w=742&quality=100',
+            'previewImageUrl': 'https://images.performgroup.com/di/library/GOAL/a6/bb/fifa-18-ronaldo_lx3r88bpjpk91re36ukdgomrj.jpg?t=2027563652&w=620&h=430'
+        },]
+        // messages: [{
+        //     type: 'text',
+        //     text: 'Hello'
+        // },
+        // {
+        //     type: 'text',
+        //     text: msg
+        // }]
     })
     request.post({
         url: 'https://api.line.me/v2/bot/message/reply',
