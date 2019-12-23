@@ -12,6 +12,11 @@ app.get('/bot3', (req, res) => {
     res.header("Cache-Control", "no-cache, no-store, must-revalidate");
     res.header("Pragma", "no-cache");
     res.header("Expires", 0);
+    let reply_token = req.body.events[0].replyToken
+    let msg = req.body.events[0].message.text
+    aimlInterpreter.findAnswerInLoadedAIMLFiles(msg, (answer, wildCardArray, input) => {
+    reply(reply_token, answer)
+    })
     res.sendStatus(200) 
     // console.log('Hello World');
 })
@@ -36,7 +41,7 @@ function reply(reply_token, msg) {
     let body = JSON.stringify({
         replyToken: reply_token,
         messages: [{
-            type: 'message',
+            type: 'text',
             text: msg,
         },
         {
