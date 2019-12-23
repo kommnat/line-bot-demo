@@ -35,7 +35,7 @@ function reply(reply_token ,msg) {
         replyToken: reply_token,
         messages: [{
             'type': 'image',
-            // 'originalContentUrl': 'https://www.thesun.co.uk/wp-content/uploads/2017/03/fifa-17-2.jpg?strip=all&w=742&quality=100',
+            'originalContentUrl': 'https://www.thesun.co.uk/wp-content/uploads/2017/03/fifa-17-2.jpg?strip=all&w=742&quality=100',
             'previewImageUrl': 'https://upload.wikimedia.org/wikipedia/th/thumb/c/cc/Chelsea_FC.svg/1200px-Chelsea_FC.svg.png'
         },]
         // messages: [{
