@@ -25,41 +25,41 @@ app.post('/webhook', (req, res) => {
     res.header("Expires", 0);
     let reply_token = req.body.events[0].replyToken
     let msg = req.body.events[0].message.text
-    let msg = req.body.events[0].message.text
     reply(reply_token, msg)
     
     res.sendStatus(200)
 })
 app.listen(port)
-
-function reply(reply_token, msg, img) {
+function reply(reply_token, msg) {
     let headers = {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer {tXOxbBNHDvyxUTITtlUkErraVe0AtpyFeb8Shb3+33rcl826FIjNK6eoMvgfU/6Fnmj1h9nNG6Km+ZeN6YG9BFg5phdOAhZscsvKT23QR8i6lr4f112jGMLQqLG/1mwQrQCJANMtk/SqfnhPjiy2gAdB04t89/1O/w1cDnyilFU=}'
     }
-    let body = JSON.stringify({
-        replyToken: reply_token,
-        messages: [{
-            type: 'text',
-            text: 'Hello , ',
-        },
-        {
-            type: 'text',
-            text: msg
-        },
-        {
-            type: 'text',
-            text: reply_token
-        },
-        {
-            type: "image",
-            url: "https://news.mthai.com/app/uploads/2019/09/cropped-%E0%B8%A3%E0%B8%93%E0%B8%A3%E0%B8%87%E0%B8%84%E0%B9%8C%E0%B9%80%E0%B8%81%E0%B9%87%E0%B8%9A%E0%B8%82%E0%B8%A2%E0%B8%B0_190921_0010.jpg",
-            size: "full",
-            aspectRatio: "1.51:1",
-            aspectMode: "fit"
-        },
-        ]
-    })
+    if(msg == 'kommanat'){
+        let body = JSON.stringify({
+            replyToken: reply_token,
+            messages: [{
+                type: 'text',
+                text: 'Hello , ',
+            },
+            {
+                type: 'text',
+                text: msg
+            }]
+        })
+    }else{
+        let body = JSON.stringify({
+            replyToken: reply_token,
+            messages: [
+            {
+                type: 'text',
+                text: 'สวัสดี '
+            }]
+        })
+    }
+    
+
+    
     request.post({
         url: 'https://api.line.me/v2/bot/message/reply',
         headers: headers,
