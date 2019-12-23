@@ -39,7 +39,7 @@ function reply(reply_token, msg) {
     let body = JSON.stringify({
         replyToken: reply_token,
         messages: [{
-            type: 'message',
+            type: 'text',
             text: msg
         }]
     })
