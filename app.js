@@ -9,6 +9,7 @@ const fetch = require('node-fetch');
 const axios = require('axios')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+var url = 'http://fondue.traffy.in.th/fondue/?limit=2&reported_tos=1289&status=report';
 
 app.get('/webhook', (req, res) => {
     res.header("Cache-Control", "no-cache, no-store, must-revalidate");
@@ -28,9 +29,9 @@ app.post('/webhook', (req, res) => {
     if(msg == 'chelsea' || msg == 'Chelsea' ){
         reply(reply_token, msg)
     }else if(msg == 'list' || msg == 'list'){
-        axios.get('http://fondue.traffy.in.th/fondue/?limit=2&reported_tos=1289&status=report')
+        axios.get(url)
         .then((response) => {
-         let json = response;
+         let json = response.data;
          reply1(reply_token, msg,json )
         })
         
