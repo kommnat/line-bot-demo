@@ -9,18 +9,16 @@ const fetch = require('node-fetch');
 const axios = require('axios')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-var url = 'http://fondue.traffy.in.th/fondue/?limit=2&reported_tos=1289&status=report';
+let chanel_access_token = 'Bearer {tXOxbBNHDvyxUTITtlUkErraVe0AtpyFeb8Shb3+33rcl826FIjNK6eoMvgfU/6Fnmj1h9nNG6Km+ZeN6YG9BFg5phdOAhZscsvKT23QR8i6lr4f112jGMLQqLG/1mwQrQCJANMtk/SqfnhPjiy2gAdB04t89/1O/w1cDnyilFU=}';
+let url = 'http://fondue.traffy.in.th/fondue/?limit=2&reported_tos=1289&status=report';
+
 
 app.get('/webhook', (req, res) => {
     res.header("Cache-Control", "no-cache, no-store, must-revalidate");
     res.header("Pragma", "no-cache");
     res.header("Expires", 0);
     res.sendStatus(200) 
-    axios.get('http://fondue.traffy.in.th/fondue/?limit=2&reported_tos=1289&status=report')
-    .then((response) => {
-     let json = response.data;
-     console.log('response.data :',response.data)
-    })
+    
     // console.log('Hello World');
 })
 
@@ -33,8 +31,8 @@ app.post('/webhook', (req, res) => {
     let msg = req.body.events[0].message.text
     if(msg == 'chelsea' || msg == 'Chelsea' ){
         reply(reply_token, msg)
-    }else if(msg == 'list' || msg == 'list'){
-        axios.get('http://fondue.traffy.in.th/fondue/?limit=2&reported_tos=1289&status=report')
+    }else if(msg == 'list' || msg == 'List'){
+        axios.get(url)
         .then((response) => {
          let json = response.data;
          console.log('response.data :',response.data)
@@ -50,7 +48,7 @@ app.listen(port)
 function reply(reply_token ,msg) {
     let headers = {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer {tXOxbBNHDvyxUTITtlUkErraVe0AtpyFeb8Shb3+33rcl826FIjNK6eoMvgfU/6Fnmj1h9nNG6Km+ZeN6YG9BFg5phdOAhZscsvKT23QR8i6lr4f112jGMLQqLG/1mwQrQCJANMtk/SqfnhPjiy2gAdB04t89/1O/w1cDnyilFU=}'
+        'Authorization': chanel_access_token
     }  
     let body = JSON.stringify({
         replyToken: reply_token,
@@ -72,13 +70,13 @@ function reply(reply_token ,msg) {
 function reply1(reply_token ,msg ,json){
     let headers = {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer {tXOxbBNHDvyxUTITtlUkErraVe0AtpyFeb8Shb3+33rcl826FIjNK6eoMvgfU/6Fnmj1h9nNG6Km+ZeN6YG9BFg5phdOAhZscsvKT23QR8i6lr4f112jGMLQqLG/1mwQrQCJANMtk/SqfnhPjiy2gAdB04t89/1O/w1cDnyilFU=}'
+        'Authorization': chanel_access_token
     }  
     let body = JSON.stringify({
         replyToken: reply_token,
        
         messages: [{
-            type: "text"   ,               
+            type: "text" ,               
             text: json,
         }
             
