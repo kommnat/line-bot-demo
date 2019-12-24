@@ -16,6 +16,11 @@ app.get('/webhook', (req, res) => {
     res.header("Pragma", "no-cache");
     res.header("Expires", 0);
     res.sendStatus(200) 
+    axios.get('http://fondue.traffy.in.th/fondue/?limit=2&reported_tos=1289&status=report')
+    .then((response) => {
+     let json = response.data;
+     console.log('response.data :',response.data)
+    })
     // console.log('Hello World');
 })
 
