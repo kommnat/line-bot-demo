@@ -43,12 +43,15 @@ app.post('/webhook', (req, res) => {
         if(status_problem == 'report'){
         let status_report = 'รอดำเนินการ'
             reply1(reply_token, status_report, photo_problem, type_problem, comment_problem, address_problem)
+
         }else if(status_problem == 'inprogress'){
         let status_inprogress = 'กำลังดำเนินการ'
             reply1(reply_token, status_inprogress, photo_problem, type_problem, comment_problem, address_problem)
+
         }else if(status_problem == 'finish'){
         let status_finish = 'เสร็จสิ้น'
             reply1(reply_token, status_finish, photo_problem, type_problem, comment_problem, address_problem)
+
         }else if(status_problem == 'irrelevant'){
         let status_irrelevant = 'ไม่เกี่ยวข้อง'
             reply1(reply_token, status_irrelevant, photo_problem, type_problem, comment_problem, address_problem)
@@ -94,175 +97,1790 @@ function reply1(reply_token, status_problem, photo_problem, type_problem, commen
         replyToken: reply_token,
        
         messages: [
-            // {
-            //     type: 'text',
-            //     text: type_problem,
-            // }
-        {
-            "type": "flex",
-            "altText": "Flex Message",
-            "contents": {
-              "type": "bubble",
-              "direction": "ltr",
-              "header": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "box",
-                    "layout": "baseline",
-                    "spacing": "sm",
-                    "contents": [
-                      {
-                        "type": "text",
-                        "text": "สถานะ",
-                        "flex": 2,
-                        "size": "lg",
-                        "weight": "bold",
-                        "color": "#AAAAAA"
-                      },
-                      {
-                        "type": "text",
-                        "text": status_problem,
-                        "flex": 5,
-                        "size": "lg",
-                        "weight": "bold",
-                        "color": "#666666",
-                        "wrap": true
-                      }
-                    ]
-                  }
-                ]
-              },
-              "hero": {
-                "type": "image",
-                "url": photo_problem,
-                "size": "full",
-                "aspectRatio": "1.51:1",
-                "aspectMode": "fit"
-              },
-              "body": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "box",
-                    "layout": "vertical",
-                    "spacing": "sm",
-                    "margin": "lg",
-                    "contents": [
-                      {
+            {
+                "type": "flex",
+                "altText": "Flex Message",
+                "contents": {
+                  "type": "carousel",
+                  "contents": [
+                    {
+                      "type": "bubble",
+                      "direction": "ltr",
+                      "header": {
                         "type": "box",
-                        "layout": "baseline",
-                        "spacing": "sm",
+                        "layout": "vertical",
                         "contents": [
                           {
-                            "type": "text",
-                            "text": "ประเภท",
-                            "flex": 2,
-                            "size": "lg",
-                            "weight": "bold",
-                            "color": "#AAAAAA",
+                            "type": "box",
+                            "layout": "baseline",
+                            "spacing": "sm",
+                            "contents": [
+                              {
+                                "type": "text",
+                                "text": "สถานะ",
+                                "flex": 2,
+                                "size": "lg",
+                                "weight": "bold",
+                                "color": "#AAAAAA"
+                              },
+                              {
+                                "type": "text",
+                                "text": "รอดำเนินการ",
+                                "flex": 5,
+                                "size": "lg",
+                                "weight": "bold",
+                                "color": "#666666",
+                                "wrap": true
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "hero": {
+                        "type": "image",
+                        "url": "https://image.flaticon.com/icons/svg/1996/1996788.svg",
+                        "size": "full",
+                        "aspectRatio": "1.51:1",
+                        "aspectMode": "fit"
+                      },
+                      "body": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "vertical",
+                            "spacing": "sm",
+                            "margin": "lg",
+                            "contents": [
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "ประเภท",
+                                    "flex": 2,
+                                    "size": "lg",
+                                    "weight": "bold",
+                                    "color": "#AAAAAA",
+                                    "action": {
+                                      "type": "message",
+                                      "label": "เปลี่ยนประเภท",
+                                      "text": "เปลี่ยนประเภทของ ขยะนอกถังมาเก็บด้วย"
+                                    }
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "ขยะ",
+                                    "flex": 5,
+                                    "size": "lg",
+                                    "weight": "bold",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "คำอธิบาย",
+                                    "flex": 2,
+                                    "size": "sm",
+                                    "color": "#AAAAAA"
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "ขยะนอกถังมาเก็บด้วย",
+                                    "flex": 5,
+                                    "size": "sm",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "ตำแหน่ง",
+                                    "flex": 2,
+                                    "size": "sm",
+                                    "color": "#AAAAAA"
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "[ตำแหน่งที่ถูกรายงาน]",
+                                    "flex": 5,
+                                    "size": "sm",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "button",
                             "action": {
                               "type": "message",
-                              "label": "เปลี่ยนประเภท",
-                              "text": "เปลี่ยนประเภทของ ขยะนอกถังมาเก็บด้วย"
-                            }
+                              "label": "กำลังดำเนินการ",
+                              "text": "กำลังดำเนินการ ขยะนอกถังมาเก็บด้วย"
+                            },
+                            "color": "#805637",
+                            "margin": "lg",
+                            "style": "primary"
                           },
                           {
-                            "type": "text",
-                            "text": type_problem,
-                            "flex": 5,
-                            "size": "lg",
-                            "weight": "bold",
-                            "color": "#666666",
-                            "wrap": true
-                          }
-                        ]
-                      },
-                      {
-                        "type": "box",
-                        "layout": "baseline",
-                        "spacing": "sm",
-                        "contents": [
-                          {
-                            "type": "text",
-                            "text": "คำอธิบาย",
-                            "flex": 2,
-                            "size": "sm",
-                            "color": "#AAAAAA"
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "เสร็จสิ้น",
+                              "text": "ดำเนินการเรื่อง ขยะนอกถังมาเก็บด้วย เสร็จแล้ว"
+                            },
+                            "color": "#805637",
+                            "margin": "sm",
+                            "style": "primary"
                           },
                           {
-                            "type": "text",
-                            "text": comment_problem,
-                            "flex": 5,
-                            "size": "sm",
-                            "color": "#666666",
-                            "wrap": true
-                          }
-                        ]
-                      },
-                      {
-                        "type": "box",
-                        "layout": "baseline",
-                        "spacing": "sm",
-                        "contents": [
-                          {
-                            "type": "text",
-                            "text": "ตำแหน่ง",
-                            "flex": 2,
-                            "size": "sm",
-                            "color": "#AAAAAA"
-                          },
-                          {
-                            "type": "text",
-                            "text": address_problem,
-                            "flex": 5,
-                            "size": "sm",
-                            "color": "#666666",
-                            "wrap": true
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "ไม่เกี่ยวข้อง",
+                              "text": "ดำเนินการเปลี่ยน ขยะนอกถังมาเก็บด้วย เป้นไม่เกี่ยวข้อง"
+                            },
+                            "color": "#805637",
+                            "margin": "sm",
+                            "style": "primary"
                           }
                         ]
                       }
-                    ]
-                  },
-                  {
-                    "type": "button",
-                    "action": {
-                      "type": "message",
-                      "label": "กำลังดำเนินการ",
-                      "text": "กำลังดำเนินการ ขยะนอกถังมาเก็บด้วย"
                     },
-                    "color": "#805637",
-                    "margin": "lg",
-                    "style": "primary"
-                  },
-                  {
-                    "type": "button",
-                    "action": {
-                      "type": "message",
-                      "label": "เสร็จสิ้น",
-                      "text": "ดำเนินการเรื่อง ขยะนอกถังมาเก็บด้วย เสร็จแล้ว"
+                    {
+                      "type": "bubble",
+                      "direction": "ltr",
+                      "header": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "baseline",
+                            "spacing": "sm",
+                            "contents": [
+                              {
+                                "type": "text",
+                                "text": "สถานะ",
+                                "flex": 2,
+                                "size": "lg",
+                                "weight": "bold",
+                                "color": "#AAAAAA"
+                              },
+                              {
+                                "type": "text",
+                                "text": "รอดำเนินการ",
+                                "flex": 5,
+                                "size": "lg",
+                                "weight": "bold",
+                                "color": "#666666",
+                                "wrap": true
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "hero": {
+                        "type": "image",
+                        "url": "https://image.flaticon.com/icons/svg/1996/1996788.svg",
+                        "size": "full",
+                        "aspectRatio": "1.51:1",
+                        "aspectMode": "fit"
+                      },
+                      "body": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "vertical",
+                            "spacing": "sm",
+                            "margin": "lg",
+                            "contents": [
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "ประเภท",
+                                    "flex": 2,
+                                    "size": "lg",
+                                    "weight": "bold",
+                                    "color": "#AAAAAA",
+                                    "action": {
+                                      "type": "message",
+                                      "label": "เปลี่ยนประเภท",
+                                      "text": "เปลี่ยนประเภทของ ขยะนอกถังมาเก็บด้วย"
+                                    }
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "ขยะ",
+                                    "flex": 5,
+                                    "size": "lg",
+                                    "weight": "bold",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "คำอธิบาย",
+                                    "flex": 2,
+                                    "size": "sm",
+                                    "color": "#AAAAAA"
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "ขยะนอกถังมาเก็บด้วย",
+                                    "flex": 5,
+                                    "size": "sm",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "ตำแหน่ง",
+                                    "flex": 2,
+                                    "size": "sm",
+                                    "color": "#AAAAAA"
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "[ตำแหน่งที่ถูกรายงาน]",
+                                    "flex": 5,
+                                    "size": "sm",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "กำลังดำเนินการ",
+                              "text": "กำลังดำเนินการ ขยะนอกถังมาเก็บด้วย"
+                            },
+                            "color": "#805637",
+                            "margin": "lg",
+                            "style": "primary"
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "เสร็จสิ้น",
+                              "text": "ดำเนินการเรื่อง ขยะนอกถังมาเก็บด้วย เสร็จแล้ว"
+                            },
+                            "color": "#805637",
+                            "margin": "sm",
+                            "style": "primary"
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "ไม่เกี่ยวข้อง",
+                              "text": "ดำเนินการเปลี่ยน ขยะนอกถังมาเก็บด้วย เป้นไม่เกี่ยวข้อง"
+                            },
+                            "color": "#805637",
+                            "margin": "sm",
+                            "style": "primary"
+                          }
+                        ]
+                      }
                     },
-                    "color": "#805637",
-                    "margin": "sm",
-                    "style": "primary"
-                  },
-                  {
-                    "type": "button",
-                    "action": {
-                      "type": "message",
-                      "label": "ไม่เกี่ยวข้อง",
-                      "text": "ดำเนินการเปลี่ยน ขยะนอกถังมาเก็บด้วย เป้นไม่เกี่ยวข้อง"
+                    {
+                      "type": "bubble",
+                      "direction": "ltr",
+                      "header": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "baseline",
+                            "spacing": "sm",
+                            "contents": [
+                              {
+                                "type": "text",
+                                "text": "สถานะ",
+                                "flex": 2,
+                                "size": "lg",
+                                "weight": "bold",
+                                "color": "#AAAAAA"
+                              },
+                              {
+                                "type": "text",
+                                "text": "รอดำเนินการ",
+                                "flex": 5,
+                                "size": "lg",
+                                "weight": "bold",
+                                "color": "#666666",
+                                "wrap": true
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "hero": {
+                        "type": "image",
+                        "url": "https://image.flaticon.com/icons/svg/1996/1996788.svg",
+                        "size": "full",
+                        "aspectRatio": "1.51:1",
+                        "aspectMode": "fit"
+                      },
+                      "body": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "vertical",
+                            "spacing": "sm",
+                            "margin": "lg",
+                            "contents": [
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "ประเภท",
+                                    "flex": 2,
+                                    "size": "lg",
+                                    "weight": "bold",
+                                    "color": "#AAAAAA",
+                                    "action": {
+                                      "type": "message",
+                                      "label": "เปลี่ยนประเภท",
+                                      "text": "เปลี่ยนประเภทของ ขยะนอกถังมาเก็บด้วย"
+                                    }
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "ขยะ",
+                                    "flex": 5,
+                                    "size": "lg",
+                                    "weight": "bold",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "คำอธิบาย",
+                                    "flex": 2,
+                                    "size": "sm",
+                                    "color": "#AAAAAA"
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "ขยะนอกถังมาเก็บด้วย",
+                                    "flex": 5,
+                                    "size": "sm",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "ตำแหน่ง",
+                                    "flex": 2,
+                                    "size": "sm",
+                                    "color": "#AAAAAA"
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "[ตำแหน่งที่ถูกรายงาน]",
+                                    "flex": 5,
+                                    "size": "sm",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "กำลังดำเนินการ",
+                              "text": "กำลังดำเนินการ ขยะนอกถังมาเก็บด้วย"
+                            },
+                            "color": "#805637",
+                            "margin": "lg",
+                            "style": "primary"
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "เสร็จสิ้น",
+                              "text": "ดำเนินการเรื่อง ขยะนอกถังมาเก็บด้วย เสร็จแล้ว"
+                            },
+                            "color": "#805637",
+                            "margin": "sm",
+                            "style": "primary"
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "ไม่เกี่ยวข้อง",
+                              "text": "ดำเนินการเปลี่ยน ขยะนอกถังมาเก็บด้วย เป้นไม่เกี่ยวข้อง"
+                            },
+                            "color": "#805637",
+                            "margin": "sm",
+                            "style": "primary"
+                          }
+                        ]
+                      }
                     },
-                    "color": "#805637",
-                    "margin": "sm",
-                    "style": "primary"
-                  }
-                ]
+                    {
+                      "type": "bubble",
+                      "direction": "ltr",
+                      "header": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "baseline",
+                            "spacing": "sm",
+                            "contents": [
+                              {
+                                "type": "text",
+                                "text": "สถานะ",
+                                "flex": 2,
+                                "size": "lg",
+                                "weight": "bold",
+                                "color": "#AAAAAA"
+                              },
+                              {
+                                "type": "text",
+                                "text": "รอดำเนินการ",
+                                "flex": 5,
+                                "size": "lg",
+                                "weight": "bold",
+                                "color": "#666666",
+                                "wrap": true
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "hero": {
+                        "type": "image",
+                        "url": "https://image.flaticon.com/icons/svg/1996/1996788.svg",
+                        "size": "full",
+                        "aspectRatio": "1.51:1",
+                        "aspectMode": "fit"
+                      },
+                      "body": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "vertical",
+                            "spacing": "sm",
+                            "margin": "lg",
+                            "contents": [
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "ประเภท",
+                                    "flex": 2,
+                                    "size": "lg",
+                                    "weight": "bold",
+                                    "color": "#AAAAAA",
+                                    "action": {
+                                      "type": "message",
+                                      "label": "เปลี่ยนประเภท",
+                                      "text": "เปลี่ยนประเภทของ ขยะนอกถังมาเก็บด้วย"
+                                    }
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "ขยะ",
+                                    "flex": 5,
+                                    "size": "lg",
+                                    "weight": "bold",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "คำอธิบาย",
+                                    "flex": 2,
+                                    "size": "sm",
+                                    "color": "#AAAAAA"
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "ขยะนอกถังมาเก็บด้วย",
+                                    "flex": 5,
+                                    "size": "sm",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "ตำแหน่ง",
+                                    "flex": 2,
+                                    "size": "sm",
+                                    "color": "#AAAAAA"
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "[ตำแหน่งที่ถูกรายงาน]",
+                                    "flex": 5,
+                                    "size": "sm",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "กำลังดำเนินการ",
+                              "text": "กำลังดำเนินการ ขยะนอกถังมาเก็บด้วย"
+                            },
+                            "color": "#805637",
+                            "margin": "lg",
+                            "style": "primary"
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "เสร็จสิ้น",
+                              "text": "ดำเนินการเรื่อง ขยะนอกถังมาเก็บด้วย เสร็จแล้ว"
+                            },
+                            "color": "#805637",
+                            "margin": "sm",
+                            "style": "primary"
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "ไม่เกี่ยวข้อง",
+                              "text": "ดำเนินการเปลี่ยน ขยะนอกถังมาเก็บด้วย เป้นไม่เกี่ยวข้อง"
+                            },
+                            "color": "#805637",
+                            "margin": "sm",
+                            "style": "primary"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "bubble",
+                      "direction": "ltr",
+                      "header": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "baseline",
+                            "spacing": "sm",
+                            "contents": [
+                              {
+                                "type": "text",
+                                "text": "สถานะ",
+                                "flex": 2,
+                                "size": "lg",
+                                "weight": "bold",
+                                "color": "#AAAAAA"
+                              },
+                              {
+                                "type": "text",
+                                "text": "รอดำเนินการ",
+                                "flex": 5,
+                                "size": "lg",
+                                "weight": "bold",
+                                "color": "#666666",
+                                "wrap": true
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "hero": {
+                        "type": "image",
+                        "url": "https://image.flaticon.com/icons/svg/1996/1996788.svg",
+                        "size": "full",
+                        "aspectRatio": "1.51:1",
+                        "aspectMode": "fit"
+                      },
+                      "body": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "vertical",
+                            "spacing": "sm",
+                            "margin": "lg",
+                            "contents": [
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "ประเภท",
+                                    "flex": 2,
+                                    "size": "lg",
+                                    "weight": "bold",
+                                    "color": "#AAAAAA",
+                                    "action": {
+                                      "type": "message",
+                                      "label": "เปลี่ยนประเภท",
+                                      "text": "เปลี่ยนประเภทของ ขยะนอกถังมาเก็บด้วย"
+                                    }
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "ขยะ",
+                                    "flex": 5,
+                                    "size": "lg",
+                                    "weight": "bold",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "คำอธิบาย",
+                                    "flex": 2,
+                                    "size": "sm",
+                                    "color": "#AAAAAA"
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "ขยะนอกถังมาเก็บด้วย",
+                                    "flex": 5,
+                                    "size": "sm",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "ตำแหน่ง",
+                                    "flex": 2,
+                                    "size": "sm",
+                                    "color": "#AAAAAA"
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "[ตำแหน่งที่ถูกรายงาน]",
+                                    "flex": 5,
+                                    "size": "sm",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "กำลังดำเนินการ",
+                              "text": "กำลังดำเนินการ ขยะนอกถังมาเก็บด้วย"
+                            },
+                            "color": "#805637",
+                            "margin": "lg",
+                            "style": "primary"
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "เสร็จสิ้น",
+                              "text": "ดำเนินการเรื่อง ขยะนอกถังมาเก็บด้วย เสร็จแล้ว"
+                            },
+                            "color": "#805637",
+                            "margin": "sm",
+                            "style": "primary"
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "ไม่เกี่ยวข้อง",
+                              "text": "ดำเนินการเปลี่ยน ขยะนอกถังมาเก็บด้วย เป้นไม่เกี่ยวข้อง"
+                            },
+                            "color": "#805637",
+                            "margin": "sm",
+                            "style": "primary"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "bubble",
+                      "direction": "ltr",
+                      "header": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "baseline",
+                            "spacing": "sm",
+                            "contents": [
+                              {
+                                "type": "text",
+                                "text": "สถานะ",
+                                "flex": 2,
+                                "size": "lg",
+                                "weight": "bold",
+                                "color": "#AAAAAA"
+                              },
+                              {
+                                "type": "text",
+                                "text": "รอดำเนินการ",
+                                "flex": 5,
+                                "size": "lg",
+                                "weight": "bold",
+                                "color": "#666666",
+                                "wrap": true
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "hero": {
+                        "type": "image",
+                        "url": "https://image.flaticon.com/icons/svg/1996/1996788.svg",
+                        "size": "full",
+                        "aspectRatio": "1.51:1",
+                        "aspectMode": "fit"
+                      },
+                      "body": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "vertical",
+                            "spacing": "sm",
+                            "margin": "lg",
+                            "contents": [
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "ประเภท",
+                                    "flex": 2,
+                                    "size": "lg",
+                                    "weight": "bold",
+                                    "color": "#AAAAAA",
+                                    "action": {
+                                      "type": "message",
+                                      "label": "เปลี่ยนประเภท",
+                                      "text": "เปลี่ยนประเภทของ ขยะนอกถังมาเก็บด้วย"
+                                    }
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "ขยะ",
+                                    "flex": 5,
+                                    "size": "lg",
+                                    "weight": "bold",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "คำอธิบาย",
+                                    "flex": 2,
+                                    "size": "sm",
+                                    "color": "#AAAAAA"
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "ขยะนอกถังมาเก็บด้วย",
+                                    "flex": 5,
+                                    "size": "sm",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "ตำแหน่ง",
+                                    "flex": 2,
+                                    "size": "sm",
+                                    "color": "#AAAAAA"
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "[ตำแหน่งที่ถูกรายงาน]",
+                                    "flex": 5,
+                                    "size": "sm",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "กำลังดำเนินการ",
+                              "text": "กำลังดำเนินการ ขยะนอกถังมาเก็บด้วย"
+                            },
+                            "color": "#805637",
+                            "margin": "lg",
+                            "style": "primary"
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "เสร็จสิ้น",
+                              "text": "ดำเนินการเรื่อง ขยะนอกถังมาเก็บด้วย เสร็จแล้ว"
+                            },
+                            "color": "#805637",
+                            "margin": "sm",
+                            "style": "primary"
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "ไม่เกี่ยวข้อง",
+                              "text": "ดำเนินการเปลี่ยน ขยะนอกถังมาเก็บด้วย เป้นไม่เกี่ยวข้อง"
+                            },
+                            "color": "#805637",
+                            "margin": "sm",
+                            "style": "primary"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "bubble",
+                      "direction": "ltr",
+                      "header": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "baseline",
+                            "spacing": "sm",
+                            "contents": [
+                              {
+                                "type": "text",
+                                "text": "สถานะ",
+                                "flex": 2,
+                                "size": "lg",
+                                "weight": "bold",
+                                "color": "#AAAAAA"
+                              },
+                              {
+                                "type": "text",
+                                "text": "รอดำเนินการ",
+                                "flex": 5,
+                                "size": "lg",
+                                "weight": "bold",
+                                "color": "#666666",
+                                "wrap": true
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "hero": {
+                        "type": "image",
+                        "url": "https://image.flaticon.com/icons/svg/1996/1996788.svg",
+                        "size": "full",
+                        "aspectRatio": "1.51:1",
+                        "aspectMode": "fit"
+                      },
+                      "body": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "vertical",
+                            "spacing": "sm",
+                            "margin": "lg",
+                            "contents": [
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "ประเภท",
+                                    "flex": 2,
+                                    "size": "lg",
+                                    "weight": "bold",
+                                    "color": "#AAAAAA",
+                                    "action": {
+                                      "type": "message",
+                                      "label": "เปลี่ยนประเภท",
+                                      "text": "เปลี่ยนประเภทของ ขยะนอกถังมาเก็บด้วย"
+                                    }
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "ขยะ",
+                                    "flex": 5,
+                                    "size": "lg",
+                                    "weight": "bold",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "คำอธิบาย",
+                                    "flex": 2,
+                                    "size": "sm",
+                                    "color": "#AAAAAA"
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "ขยะนอกถังมาเก็บด้วย",
+                                    "flex": 5,
+                                    "size": "sm",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "ตำแหน่ง",
+                                    "flex": 2,
+                                    "size": "sm",
+                                    "color": "#AAAAAA"
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "[ตำแหน่งที่ถูกรายงาน]",
+                                    "flex": 5,
+                                    "size": "sm",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "กำลังดำเนินการ",
+                              "text": "กำลังดำเนินการ ขยะนอกถังมาเก็บด้วย"
+                            },
+                            "color": "#805637",
+                            "margin": "lg",
+                            "style": "primary"
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "เสร็จสิ้น",
+                              "text": "ดำเนินการเรื่อง ขยะนอกถังมาเก็บด้วย เสร็จแล้ว"
+                            },
+                            "color": "#805637",
+                            "margin": "sm",
+                            "style": "primary"
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "ไม่เกี่ยวข้อง",
+                              "text": "ดำเนินการเปลี่ยน ขยะนอกถังมาเก็บด้วย เป้นไม่เกี่ยวข้อง"
+                            },
+                            "color": "#805637",
+                            "margin": "sm",
+                            "style": "primary"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "bubble",
+                      "direction": "ltr",
+                      "header": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "baseline",
+                            "spacing": "sm",
+                            "contents": [
+                              {
+                                "type": "text",
+                                "text": "สถานะ",
+                                "flex": 2,
+                                "size": "lg",
+                                "weight": "bold",
+                                "color": "#AAAAAA"
+                              },
+                              {
+                                "type": "text",
+                                "text": "รอดำเนินการ",
+                                "flex": 5,
+                                "size": "lg",
+                                "weight": "bold",
+                                "color": "#666666",
+                                "wrap": true
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "hero": {
+                        "type": "image",
+                        "url": "https://image.flaticon.com/icons/svg/1996/1996788.svg",
+                        "size": "full",
+                        "aspectRatio": "1.51:1",
+                        "aspectMode": "fit"
+                      },
+                      "body": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "vertical",
+                            "spacing": "sm",
+                            "margin": "lg",
+                            "contents": [
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "ประเภท",
+                                    "flex": 2,
+                                    "size": "lg",
+                                    "weight": "bold",
+                                    "color": "#AAAAAA",
+                                    "action": {
+                                      "type": "message",
+                                      "label": "เปลี่ยนประเภท",
+                                      "text": "เปลี่ยนประเภทของ ขยะนอกถังมาเก็บด้วย"
+                                    }
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "ขยะ",
+                                    "flex": 5,
+                                    "size": "lg",
+                                    "weight": "bold",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "คำอธิบาย",
+                                    "flex": 2,
+                                    "size": "sm",
+                                    "color": "#AAAAAA"
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "ขยะนอกถังมาเก็บด้วย",
+                                    "flex": 5,
+                                    "size": "sm",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "ตำแหน่ง",
+                                    "flex": 2,
+                                    "size": "sm",
+                                    "color": "#AAAAAA"
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "[ตำแหน่งที่ถูกรายงาน]",
+                                    "flex": 5,
+                                    "size": "sm",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "กำลังดำเนินการ",
+                              "text": "กำลังดำเนินการ ขยะนอกถังมาเก็บด้วย"
+                            },
+                            "color": "#805637",
+                            "margin": "lg",
+                            "style": "primary"
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "เสร็จสิ้น",
+                              "text": "ดำเนินการเรื่อง ขยะนอกถังมาเก็บด้วย เสร็จแล้ว"
+                            },
+                            "color": "#805637",
+                            "margin": "sm",
+                            "style": "primary"
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "ไม่เกี่ยวข้อง",
+                              "text": "ดำเนินการเปลี่ยน ขยะนอกถังมาเก็บด้วย เป้นไม่เกี่ยวข้อง"
+                            },
+                            "color": "#805637",
+                            "margin": "sm",
+                            "style": "primary"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "bubble",
+                      "direction": "ltr",
+                      "header": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "baseline",
+                            "spacing": "sm",
+                            "contents": [
+                              {
+                                "type": "text",
+                                "text": "สถานะ",
+                                "flex": 2,
+                                "size": "lg",
+                                "weight": "bold",
+                                "color": "#AAAAAA"
+                              },
+                              {
+                                "type": "text",
+                                "text": "รอดำเนินการ",
+                                "flex": 5,
+                                "size": "lg",
+                                "weight": "bold",
+                                "color": "#666666",
+                                "wrap": true
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "hero": {
+                        "type": "image",
+                        "url": "https://image.flaticon.com/icons/svg/1996/1996788.svg",
+                        "size": "full",
+                        "aspectRatio": "1.51:1",
+                        "aspectMode": "fit"
+                      },
+                      "body": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "vertical",
+                            "spacing": "sm",
+                            "margin": "lg",
+                            "contents": [
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "ประเภท",
+                                    "flex": 2,
+                                    "size": "lg",
+                                    "weight": "bold",
+                                    "color": "#AAAAAA",
+                                    "action": {
+                                      "type": "message",
+                                      "label": "เปลี่ยนประเภท",
+                                      "text": "เปลี่ยนประเภทของ ขยะนอกถังมาเก็บด้วย"
+                                    }
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "ขยะ",
+                                    "flex": 5,
+                                    "size": "lg",
+                                    "weight": "bold",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "คำอธิบาย",
+                                    "flex": 2,
+                                    "size": "sm",
+                                    "color": "#AAAAAA"
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "ขยะนอกถังมาเก็บด้วย",
+                                    "flex": 5,
+                                    "size": "sm",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "ตำแหน่ง",
+                                    "flex": 2,
+                                    "size": "sm",
+                                    "color": "#AAAAAA"
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "[ตำแหน่งที่ถูกรายงาน]",
+                                    "flex": 5,
+                                    "size": "sm",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "กำลังดำเนินการ",
+                              "text": "กำลังดำเนินการ ขยะนอกถังมาเก็บด้วย"
+                            },
+                            "color": "#805637",
+                            "margin": "lg",
+                            "style": "primary"
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "เสร็จสิ้น",
+                              "text": "ดำเนินการเรื่อง ขยะนอกถังมาเก็บด้วย เสร็จแล้ว"
+                            },
+                            "color": "#805637",
+                            "margin": "sm",
+                            "style": "primary"
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "ไม่เกี่ยวข้อง",
+                              "text": "ดำเนินการเปลี่ยน ขยะนอกถังมาเก็บด้วย เป้นไม่เกี่ยวข้อง"
+                            },
+                            "color": "#805637",
+                            "margin": "sm",
+                            "style": "primary"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "bubble",
+                      "direction": "ltr",
+                      "header": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "baseline",
+                            "spacing": "sm",
+                            "contents": [
+                              {
+                                "type": "text",
+                                "text": "สถานะ",
+                                "flex": 2,
+                                "size": "lg",
+                                "weight": "bold",
+                                "color": "#AAAAAA"
+                              },
+                              {
+                                "type": "text",
+                                "text": "รอดำเนินการ",
+                                "flex": 5,
+                                "size": "lg",
+                                "weight": "bold",
+                                "color": "#666666",
+                                "wrap": true
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "hero": {
+                        "type": "image",
+                        "url": "https://image.flaticon.com/icons/svg/1996/1996788.svg",
+                        "size": "full",
+                        "aspectRatio": "1.51:1",
+                        "aspectMode": "fit"
+                      },
+                      "body": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                          {
+                            "type": "box",
+                            "layout": "vertical",
+                            "spacing": "sm",
+                            "margin": "lg",
+                            "contents": [
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "ประเภท",
+                                    "flex": 2,
+                                    "size": "lg",
+                                    "weight": "bold",
+                                    "color": "#AAAAAA",
+                                    "action": {
+                                      "type": "message",
+                                      "label": "เปลี่ยนประเภท",
+                                      "text": "เปลี่ยนประเภทของ ขยะนอกถังมาเก็บด้วย"
+                                    }
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "ขยะ",
+                                    "flex": 5,
+                                    "size": "lg",
+                                    "weight": "bold",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "คำอธิบาย",
+                                    "flex": 2,
+                                    "size": "sm",
+                                    "color": "#AAAAAA"
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "ขยะนอกถังมาเก็บด้วย",
+                                    "flex": 5,
+                                    "size": "sm",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                  {
+                                    "type": "text",
+                                    "text": "ตำแหน่ง",
+                                    "flex": 2,
+                                    "size": "sm",
+                                    "color": "#AAAAAA"
+                                  },
+                                  {
+                                    "type": "text",
+                                    "text": "[ตำแหน่งที่ถูกรายงาน]",
+                                    "flex": 5,
+                                    "size": "sm",
+                                    "color": "#666666",
+                                    "wrap": true
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "กำลังดำเนินการ",
+                              "text": "กำลังดำเนินการ ขยะนอกถังมาเก็บด้วย"
+                            },
+                            "color": "#805637",
+                            "margin": "lg",
+                            "style": "primary"
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "เสร็จสิ้น",
+                              "text": "ดำเนินการเรื่อง ขยะนอกถังมาเก็บด้วย เสร็จแล้ว"
+                            },
+                            "color": "#805637",
+                            "margin": "sm",
+                            "style": "primary"
+                          },
+                          {
+                            "type": "button",
+                            "action": {
+                              "type": "message",
+                              "label": "ไม่เกี่ยวข้อง",
+                              "text": "ดำเนินการเปลี่ยน ขยะนอกถังมาเก็บด้วย เป้นไม่เกี่ยวข้อง"
+                            },
+                            "color": "#805637",
+                            "margin": "sm",
+                            "style": "primary"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
               }
-            }
-          }
+        // {
+        //     "type": "flex",
+        //     "altText": "Flex Message",
+        //     "contents": {
+        //       "type": "bubble",
+        //       "direction": "ltr",
+        //       "header": {
+        //         "type": "box",
+        //         "layout": "vertical",
+        //         "contents": [
+        //           {
+        //             "type": "box",
+        //             "layout": "baseline",
+        //             "spacing": "sm",
+        //             "contents": [
+        //               {
+        //                 "type": "text",
+        //                 "text": "สถานะ",
+        //                 "flex": 2,
+        //                 "size": "lg",
+        //                 "weight": "bold",
+        //                 "color": "#AAAAAA"
+        //               },
+        //               {
+        //                 "type": "text",
+        //                 "text": status_problem,
+        //                 "flex": 5,
+        //                 "size": "lg",
+        //                 "weight": "bold",
+        //                 "color": "#666666",
+        //                 "wrap": true
+        //               }
+        //             ]
+        //           }
+        //         ]
+        //       },
+        //       "hero": {
+        //         "type": "image",
+        //         "url": photo_problem,
+        //         "size": "full",
+        //         "aspectRatio": "1.51:1",
+        //         "aspectMode": "fit"
+        //       },
+        //       "body": {
+        //         "type": "box",
+        //         "layout": "vertical",
+        //         "contents": [
+        //           {
+        //             "type": "box",
+        //             "layout": "vertical",
+        //             "spacing": "sm",
+        //             "margin": "lg",
+        //             "contents": [
+        //               {
+        //                 "type": "box",
+        //                 "layout": "baseline",
+        //                 "spacing": "sm",
+        //                 "contents": [
+        //                   {
+        //                     "type": "text",
+        //                     "text": "ประเภท",
+        //                     "flex": 2,
+        //                     "size": "lg",
+        //                     "weight": "bold",
+        //                     "color": "#AAAAAA",
+        //                     "action": {
+        //                       "type": "message",
+        //                       "label": "เปลี่ยนประเภท",
+        //                       "text": "เปลี่ยนประเภทของ ขยะนอกถังมาเก็บด้วย"
+        //                     }
+        //                   },
+        //                   {
+        //                     "type": "text",
+        //                     "text": type_problem,
+        //                     "flex": 5,
+        //                     "size": "lg",
+        //                     "weight": "bold",
+        //                     "color": "#666666",
+        //                     "wrap": true
+        //                   }
+        //                 ]
+        //               },
+        //               {
+        //                 "type": "box",
+        //                 "layout": "baseline",
+        //                 "spacing": "sm",
+        //                 "contents": [
+        //                   {
+        //                     "type": "text",
+        //                     "text": "คำอธิบาย",
+        //                     "flex": 2,
+        //                     "size": "sm",
+        //                     "color": "#AAAAAA"
+        //                   },
+        //                   {
+        //                     "type": "text",
+        //                     "text": comment_problem,
+        //                     "flex": 5,
+        //                     "size": "sm",
+        //                     "color": "#666666",
+        //                     "wrap": true
+        //                   }
+        //                 ]
+        //               },
+        //               {
+        //                 "type": "box",
+        //                 "layout": "baseline",
+        //                 "spacing": "sm",
+        //                 "contents": [
+        //                   {
+        //                     "type": "text",
+        //                     "text": "ตำแหน่ง",
+        //                     "flex": 2,
+        //                     "size": "sm",
+        //                     "color": "#AAAAAA"
+        //                   },
+        //                   {
+        //                     "type": "text",
+        //                     "text": address_problem,
+        //                     "flex": 5,
+        //                     "size": "sm",
+        //                     "color": "#666666",
+        //                     "wrap": true
+        //                   }
+        //                 ]
+        //               }
+        //             ]
+        //           },
+        //           {
+        //             "type": "button",
+        //             "action": {
+        //               "type": "message",
+        //               "label": "กำลังดำเนินการ",
+        //               "text": "กำลังดำเนินการ ขยะนอกถังมาเก็บด้วย"
+        //             },
+        //             "color": "#805637",
+        //             "margin": "lg",
+        //             "style": "primary"
+        //           },
+        //           {
+        //             "type": "button",
+        //             "action": {
+        //               "type": "message",
+        //               "label": "เสร็จสิ้น",
+        //               "text": "ดำเนินการเรื่อง ขยะนอกถังมาเก็บด้วย เสร็จแล้ว"
+        //             },
+        //             "color": "#805637",
+        //             "margin": "sm",
+        //             "style": "primary"
+        //           },
+        //           {
+        //             "type": "button",
+        //             "action": {
+        //               "type": "message",
+        //               "label": "ไม่เกี่ยวข้อง",
+        //               "text": "ดำเนินการเปลี่ยน ขยะนอกถังมาเก็บด้วย เป้นไม่เกี่ยวข้อง"
+        //             },
+        //             "color": "#805637",
+        //             "margin": "sm",
+        //             "style": "primary"
+        //           }
+        //         ]
+        //       }
+        //     }
+        //   }
         ]
     })
     request.post({
