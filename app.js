@@ -6,7 +6,7 @@ const request = require('request')
 const app = express()
 const port = process.env.PORT || 4000
 const fetch = require('node-fetch');
-//const axios = require('axios')
+const axios = require('axios')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
