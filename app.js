@@ -29,10 +29,10 @@ app.post('/webhook', (req, res) => {
         reply(reply_token, msg)
     }else if(msg == 'list' || msg == 'list'){
         axios.get('http://fondue.traffy.in.th/fondue/?limit=2&reported_tos=1289&status=report')
-        .then((response) => {return response})
-         //let json = response;
-         reply1(reply_token, msg, )
-        
+        .then((response) => {
+         let json = response;
+         reply1(reply_token, msg,json )
+        })
         
     }
     
