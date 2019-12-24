@@ -83,7 +83,7 @@ function reply1(reply_token, status_problem, photo_problem, type_problem, commen
         messages: [
             {
                 type: 'text',
-                text: photo_problem,
+                text: type_problem,
             }
         // {
         //     "type": "flex",
