@@ -29,10 +29,11 @@ app.post('/webhook', (req, res) => {
     if(msg == 'chelsea' || msg == 'Chelsea' ){
         reply(reply_token, msg)
     }else if(msg == 'list' || msg == 'list'){
-        axios.get(url)
+        axios.get('http://fondue.traffy.in.th/fondue/?limit=2&reported_tos=1289&status=report')
         .then((response) => {
          let json = response.data;
-         reply1(reply_token, msg,json )
+         console.log('response.data :',response.data)
+         reply1(reply_token, msg,json)
         })
         
     }
