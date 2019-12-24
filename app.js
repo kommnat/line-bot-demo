@@ -6,7 +6,7 @@ const request = require('request')
 const app = express()
 const port = process.env.PORT || 4000
 const fetch = require('node-fetch');
-const axios = require('axios')
+//const axios = require('axios')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
@@ -31,7 +31,7 @@ app.post('/webhook', (req, res) => {
         axios.get('http://fondue.traffy.in.th/fondue/?limit=2&reported_tos=1289&status=report')
         .then((response) => {return response})
          //let json = response;
-         reply1(reply_token, msg, response)
+         reply1(reply_token, msg, )
         
         
     }
