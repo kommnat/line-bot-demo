@@ -36,7 +36,7 @@ app.post('/webhook', (req, res) => {
         .then((response) => {
          let status_problem = response.data.results[0].status; // report = รอดำเนินการ , inprogress = กำลังดำเนินการ , finish = เสร็จสิ้น
          let photo_problem = response.data.results[0].photos[0].photo;
-         let type_problem = response.data.results[0].roblem_type;
+         let type_problem = response.data.results[0].problem_type;
          let comment_problem = response.data.results[0].comment;
          let address_problem = response.data.results[0].address;
         
