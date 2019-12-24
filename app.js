@@ -81,175 +81,175 @@ function reply1(reply_token, status_problem, photo_problem, type_problem, commen
         replyToken: reply_token,
        
         messages: [
-            {
-                type: 'text',
-                text: type_problem,
+            // {
+            //     type: 'text',
+            //     text: type_problem,
+            // }
+        {
+            "type": "flex",
+            "altText": "Flex Message",
+            "contents": {
+              "type": "bubble",
+              "direction": "ltr",
+              "header": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "สถานะ",
+                        "flex": 2,
+                        "size": "lg",
+                        "weight": "bold",
+                        "color": "#AAAAAA"
+                      },
+                      {
+                        "type": "text",
+                        "text": status_problem,
+                        "flex": 5,
+                        "size": "lg",
+                        "weight": "bold",
+                        "color": "#666666",
+                        "wrap": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              "hero": {
+                "type": "image",
+                "url": photo_problem,
+                "size": "full",
+                "aspectRatio": "1.51:1",
+                "aspectMode": "fit"
+              },
+              "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "spacing": "sm",
+                    "margin": "lg",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "spacing": "sm",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "ประเภท",
+                            "flex": 2,
+                            "size": "lg",
+                            "weight": "bold",
+                            "color": "#AAAAAA",
+                            "action": {
+                              "type": "message",
+                              "label": "เปลี่ยนประเภท",
+                              "text": "เปลี่ยนประเภทของ ขยะนอกถังมาเก็บด้วย"
+                            }
+                          },
+                          {
+                            "type": "text",
+                            "text": type_problem,
+                            "flex": 5,
+                            "size": "lg",
+                            "weight": "bold",
+                            "color": "#666666",
+                            "wrap": true
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "spacing": "sm",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "คำอธิบาย",
+                            "flex": 2,
+                            "size": "sm",
+                            "color": "#AAAAAA"
+                          },
+                          {
+                            "type": "text",
+                            "text": comment_problem,
+                            "flex": 5,
+                            "size": "sm",
+                            "color": "#666666",
+                            "wrap": true
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "spacing": "sm",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "ตำแหน่ง",
+                            "flex": 2,
+                            "size": "sm",
+                            "color": "#AAAAAA"
+                          },
+                          {
+                            "type": "text",
+                            "text": address_problem,
+                            "flex": 5,
+                            "size": "sm",
+                            "color": "#666666",
+                            "wrap": true
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "button",
+                    "action": {
+                      "type": "message",
+                      "label": "กำลังดำเนินการ",
+                      "text": "กำลังดำเนินการ ขยะนอกถังมาเก็บด้วย"
+                    },
+                    "color": "#805637",
+                    "margin": "lg",
+                    "style": "primary"
+                  },
+                  {
+                    "type": "button",
+                    "action": {
+                      "type": "message",
+                      "label": "เสร็จสิ้น",
+                      "text": "ดำเนินการเรื่อง ขยะนอกถังมาเก็บด้วย เสร็จแล้ว"
+                    },
+                    "color": "#805637",
+                    "margin": "sm",
+                    "style": "primary"
+                  },
+                  {
+                    "type": "button",
+                    "action": {
+                      "type": "message",
+                      "label": "ไม่เกี่ยวข้อง",
+                      "text": "ดำเนินการเปลี่ยน ขยะนอกถังมาเก็บด้วย เป้นไม่เกี่ยวข้อง"
+                    },
+                    "color": "#805637",
+                    "margin": "sm",
+                    "style": "primary"
+                  }
+                ]
+              }
             }
-        // {
-        //     "type": "flex",
-        //     "altText": "Flex Message",
-        //     "contents": {
-        //       "type": "bubble",
-        //       "direction": "ltr",
-        //       "header": {
-        //         "type": "box",
-        //         "layout": "vertical",
-        //         "contents": [
-        //           {
-        //             "type": "box",
-        //             "layout": "baseline",
-        //             "spacing": "sm",
-        //             "contents": [
-        //               {
-        //                 "type": "text",
-        //                 "text": "สถานะ",
-        //                 "flex": 2,
-        //                 "size": "lg",
-        //                 "weight": "bold",
-        //                 "color": "#AAAAAA"
-        //               },
-        //               {
-        //                 "type": "text",
-        //                 "text": status_problem,
-        //                 "flex": 5,
-        //                 "size": "lg",
-        //                 "weight": "bold",
-        //                 "color": "#666666",
-        //                 "wrap": true
-        //               }
-        //             ]
-        //           }
-        //         ]
-        //       },
-        //       "hero": {
-        //         "type": "image",
-        //         "url": photo_problem,
-        //         "size": "full",
-        //         "aspectRatio": "1.51:1",
-        //         "aspectMode": "fit"
-        //       },
-        //       "body": {
-        //         "type": "box",
-        //         "layout": "vertical",
-        //         "contents": [
-        //           {
-        //             "type": "box",
-        //             "layout": "vertical",
-        //             "spacing": "sm",
-        //             "margin": "lg",
-        //             "contents": [
-        //               {
-        //                 "type": "box",
-        //                 "layout": "baseline",
-        //                 "spacing": "sm",
-        //                 "contents": [
-        //                   {
-        //                     "type": "text",
-        //                     "text": "ประเภท",
-        //                     "flex": 2,
-        //                     "size": "lg",
-        //                     "weight": "bold",
-        //                     "color": "#AAAAAA",
-        //                     "action": {
-        //                       "type": "message",
-        //                       "label": "เปลี่ยนประเภท",
-        //                       "text": "เปลี่ยนประเภทของ ขยะนอกถังมาเก็บด้วย"
-        //                     }
-        //                   },
-        //                   {
-        //                     "type": "text",
-        //                     "text": type_problem,
-        //                     "flex": 5,
-        //                     "size": "lg",
-        //                     "weight": "bold",
-        //                     "color": "#666666",
-        //                     "wrap": true
-        //                   }
-        //                 ]
-        //               },
-        //               {
-        //                 "type": "box",
-        //                 "layout": "baseline",
-        //                 "spacing": "sm",
-        //                 "contents": [
-        //                   {
-        //                     "type": "text",
-        //                     "text": "คำอธิบาย",
-        //                     "flex": 2,
-        //                     "size": "sm",
-        //                     "color": "#AAAAAA"
-        //                   },
-        //                   {
-        //                     "type": "text",
-        //                     "text": comment_problem,
-        //                     "flex": 5,
-        //                     "size": "sm",
-        //                     "color": "#666666",
-        //                     "wrap": true
-        //                   }
-        //                 ]
-        //               },
-        //               {
-        //                 "type": "box",
-        //                 "layout": "baseline",
-        //                 "spacing": "sm",
-        //                 "contents": [
-        //                   {
-        //                     "type": "text",
-        //                     "text": "ตำแหน่ง",
-        //                     "flex": 2,
-        //                     "size": "sm",
-        //                     "color": "#AAAAAA"
-        //                   },
-        //                   {
-        //                     "type": "text",
-        //                     "text": address_problem,
-        //                     "flex": 5,
-        //                     "size": "sm",
-        //                     "color": "#666666",
-        //                     "wrap": true
-        //                   }
-        //                 ]
-        //               }
-        //             ]
-        //           },
-        //           {
-        //             "type": "button",
-        //             "action": {
-        //               "type": "message",
-        //               "label": "กำลังดำเนินการ",
-        //               "text": "กำลังดำเนินการ ขยะนอกถังมาเก็บด้วย"
-        //             },
-        //             "color": "#805637",
-        //             "margin": "lg",
-        //             "style": "primary"
-        //           },
-        //           {
-        //             "type": "button",
-        //             "action": {
-        //               "type": "message",
-        //               "label": "เสร็จสิ้น",
-        //               "text": "ดำเนินการเรื่อง ขยะนอกถังมาเก็บด้วย เสร็จแล้ว"
-        //             },
-        //             "color": "#805637",
-        //             "margin": "sm",
-        //             "style": "primary"
-        //           },
-        //           {
-        //             "type": "button",
-        //             "action": {
-        //               "type": "message",
-        //               "label": "ไม่เกี่ยวข้อง",
-        //               "text": "ดำเนินการเปลี่ยน ขยะนอกถังมาเก็บด้วย เป้นไม่เกี่ยวข้อง"
-        //             },
-        //             "color": "#805637",
-        //             "margin": "sm",
-        //             "style": "primary"
-        //           }
-        //         ]
-        //       }
-        //     }
-        //   }
+          }
         ]
     })
     request.post({
