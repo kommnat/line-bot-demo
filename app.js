@@ -34,7 +34,7 @@ app.post('/webhook', (req, res) => {
     }else if(msg == 'list' || msg == 'List'){
         axios.get(url)
         .then((response) => {
-         //let json = response.data.results[0].comment;
+         let json = response.data.results[0].comment;
          console.log('response.data :',response.data)
          reply1(reply_token, msg,json)
         })
