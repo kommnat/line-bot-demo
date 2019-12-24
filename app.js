@@ -32,12 +32,12 @@ app.post('/webhook', (req, res) => {
     if(msg == 'chelsea' || msg == 'Chelsea' ){
         reply(reply_token, msg)
     }else if(msg == 'list' || msg == 'List'){
-        // axios.get(url)
-        // .then((response) => {
-        //  let json = response.data.results[0].comment;
-        //  //console.log('response.data :',response.data.results[0].comment)
-        //  reply1(reply_token, msg,json)
-        // })
+        axios.get(url)
+        .then((response) => {
+         //let json = response.data.results[0].comment;
+         console.log('response.data :',response.data.results[0].comment)
+         reply1(reply_token, msg,json)
+        })
         
     }
     
