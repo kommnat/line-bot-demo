@@ -34,14 +34,27 @@ app.post('/webhook', (req, res) => {
     }else if(msg == 'list' || msg == 'List'){
         axios.get(url)
         .then((response) => {
-         let status_problem = response.data.results[0].status; // report = รอดำเนินการ , inprogress = กำลังดำเนินการ , finish = เสร็จสิ้น
+         let status_problem = response.data.results[0].status; // report = รอดำเนินการ , inprogress = กำลังดำเนินการ , finish = เสร็จสิ้น , irrelevant = ไม่เกี่ยวข้อง
          let photo_problem = response.data.results[0].photos[0].photo;
          let type_problem = response.data.results[0].problem_type;
          let comment_problem = response.data.results[0].comment;
          let address_problem = response.data.results[0].address;
+
+        if(status_problem == 'report'){
+        let status_report = 'รอดำเนินการ'
+            reply1(reply_token, status_report, photo_problem, type_problem, comment_problem, address_problem)
+        }else if(status_problem == 'inprogress'){
+        let status_inprogress = 'กำลังดำเนินการ'
+            reply1(reply_token, status_inprogress, photo_problem, type_problem, comment_problem, address_problem)
+        }else if(status_problem == 'finish'){
+        let status_finish = 'เสร็จสิ้น'
+            reply1(reply_token, status_finish, photo_problem, type_problem, comment_problem, address_problem)
+        }else if(status_problem == 'irrelevant'){
+        let status_irrelevant = 'ไม่เกี่ยวข้อง'
+            reply1(reply_token, status_irrelevant, photo_problem, type_problem, comment_problem, address_problem)
+        }
+         //console.log('response.data :',response.data)
         
-         console.log('response.data :',response.data)
-         reply1(reply_token, status_problem, photo_problem, type_problem, comment_problem, address_problem)
         })
         
     }
